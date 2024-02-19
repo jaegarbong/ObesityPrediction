@@ -34,8 +34,14 @@ The application is meant to predict the state of health of a person based on sev
 2. Import this template file on the webpage and use the button to process the file.
 3. After the processing is complete, you have the option to download a copy of the file.
 
-*Note*: *Data checks have been put in place to rectify input errors. If you encounter such errors, please rectify and upload the file*.
+<font color='red'>*Note*</font>: <br>
+*Data checks have been put in place to identify input errors. If you encounter such errors, please rectify and upload the file*.
 
 
-*Author*:
+---
+#### Author :
 Jayit Ghosh
+
+EmaiL: jayitgwork@gmail.com
+
+LinkedIn :[Jayit Ghosh](https://www.linkedin.com/in/jayitghosh/)
