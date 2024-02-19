@@ -27,6 +27,13 @@ The application is meant to predict the state of health of a person based on sev
 11. MTRANS: Mode of transportation. This refers to how an individual gets around, such as by car, public transportation, bicycle, or walking. Active forms of transportation, such as walking and cycling, can help with weight management.
 
 
+# How to run the application:
+
+1. Clone the repository to your local system.
+2. Use cmd command to move the directory to your local repo.
+3. Use <code>streamlit run prediction.py </code> to trigger the application. This will open the streamlit app on your local webpage.
+4. Follow the below steps to run the application.
+
 ### Steps to use the application:
 
 1. Use the input template file (input_temp.xlsx) and enter relevant values.
