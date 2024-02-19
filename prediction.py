@@ -5,7 +5,6 @@ from pickle import load
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import RobustScaler,OneHotEncoder
 
-
 def data_sanity_check(df):
 
     #Check if the appropriate columns exist:
@@ -52,6 +51,9 @@ def generate_comments(df):
     df["Comment"] = df["Status"].apply(lambda x: constants.comments.get(x))    
     return df
 
+def convert_to_csv(df):
+    return df.to_csv(index=False).encode('utf-8')
+
 def predict(data,model):    
     df = data.copy()
     df = df.drop(['id'],axis=1)
@@ -92,26 +94,33 @@ def main():
             st.error("Unsupported file format. Please upload a CSV or Excel file.")
             st.stop()           
     
-    if st.button('Process File'):
-        try:
-            if input_file is not None:
-                data_sanity_check(df)
-                st.success("File Processed successfully!")
-            else:
-                st.error("Please import your data.")
-        except ValueError as e:
-            st.error(str(e))            
-        
+    if st.button('Process File'):        
+        if input_file is not None:
+            data_sanity_check(df)
+            st.success("File Processed successfully!")
+        else:
+            st.error("Please import your data.")
+            st.stop()
+    
         # Load the model:
-        with open("rf_classifier.pkl","rb") as f: 
+        with open(r"models/rf_classifier.pkl","rb") as f: 
             rf_model = load(f)
 
-        # Once the data sanity checks are passed, predict the result.
-        result = predict(df,model=rf_model)
-        result = result.iloc[:,[0,-2,-1]] #Keep Id and the result columns
-        
+    # Once the data sanity checks are passed, predict the result.
+            result = predict(df,model=rf_model)
+            result = result.iloc[:,[0,-2,-1]] #Keep Id and the result columns
+
         st.dataframe(result)
-
-
+        csv_file = convert_to_csv(result)
+                
+        st.download_button(
+            label= "Click Here to download data",
+            data = csv_file,
+            file_name= "Obesity Result.csv",
+            mime='text/csv' 
+        )
+        
+       
+        
 if __name__ == '__main__':
     main()

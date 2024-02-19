@@ -5,8 +5,11 @@ sex = ["Male","Female"]
 cat_cols = ['Gender', 'family_history_with_overweight', 'FAVC', 'CAEC', 'SMOKE', 'SCC', 'CALC', 'MTRANS', 'NObeyesdad']
 
 num_cols = ['id', 'Age', 'Height', 'Weight', 'FCVC', 'NCP', 'CH2O', 'FAF', 'TUE']
+yn_cols = ["family_history_with_overweight","FAVC","SCC"]
 
 yn = ["yes","no"]
+
+transport = ['Public_Transportation', 'Automobile', 'Walking', 'Motorbike', 'Bike']
 
 unique_classes = ["Insufficient_Weight","Normal_Weight", "Overweight_Level_I","Overweight_Level_II","Overweight_Level_III","Obesity_Type_I","Obesity_Type_II","Obesity_Type_III"]  #Set the order here.
 
